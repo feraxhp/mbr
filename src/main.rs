@@ -7,6 +7,7 @@ use crate::commands::list::{list_command, list_mannager};
 use clap::{arg, command, crate_version, Arg, Command};
 use color_print::cprintln;
 use commands::get::{get_command, get_mannager};
+use commands::set::{set_command, set_mannager};
 use std::io;
 use std::io::Write;
 use std::process::exit;
@@ -18,6 +19,7 @@ fn main() {
             .arg(arg!( -v --"number" "Prints the version number to the standard output").exclusive(true))
             .subcommand(list_command())
             .subcommand(get_command())
+            .subcommand(set_command())
             .get_matches();
     
     match matches.clone().args_present() {
@@ -36,6 +38,7 @@ fn main() {
         Some(sub) => match sub {
             ("list", list) => list_mannager(list),
             ("get", get) => get_mannager(get),
+            ("set", set) => set_mannager(set),
             _ => {}
         },
         _ => {
