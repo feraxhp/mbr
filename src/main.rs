@@ -6,6 +6,7 @@ use crate::commands::list::{list_command, list_mannager};
 
 use clap::{arg, command, crate_version, Arg, Command};
 use color_print::cprintln;
+use commands::get::{get_command, get_mannager};
 use std::io;
 use std::io::Write;
 use std::process::exit;
@@ -16,6 +17,7 @@ fn main() {
             .about("A simple CLI to manage monitores with ddc-ci tecnology")
             .arg(arg!( -v --"number" "Prints the version number to the standard output").exclusive(true))
             .subcommand(list_command())
+            .subcommand(get_command())
             .get_matches();
     
     match matches.clone().args_present() {
@@ -33,6 +35,7 @@ fn main() {
     match matches.subcommand() {
         Some(sub) => match sub {
             ("list", list) => list_mannager(list),
+            ("get", get) => get_mannager(get),
             _ => {}
         },
         _ => {

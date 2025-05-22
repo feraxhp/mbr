@@ -8,7 +8,7 @@ use crate::monitor::monitor::Monitor;
 pub fn list_command() -> Command {
     
     let br = arg!( -b --brightness "Show the brightness of the display");
-    let vr = arg!( -v --verbose "Don't show the table header");
+    let vr = arg!( -v --verbose "Show like a table");
     
     command!("list")
         .aliases(vec!["ls"])
