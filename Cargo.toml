@@ -1,9 +1,24 @@
 [package]
 name = "mbr"
-version = "0.0.1"
+version = "0.0.1-alpha"
 edition = "2024"
+license = "MIT"
+authors = ["feraxhp"]
+description = "A simple CLI to manage monitores with DDC/CI tecnology"
 
 [dependencies]
 clap = { version = "4.5.38", features = ["cargo"] }
 color-print = "0.3.7"
 ddc-hi = "0.4.1"
+
+[package.metadata.generate-rpm]
+url="https://github.com/feraxhp/mbr"
+assets = [
+    { source = "target/release/mbr", dest = "/usr/bin/mbr", mode = "755" },
+]
+
+[package.metadata.deb]
+depends="$auto"
+assets = [
+    ["target/release/mbr", "usr/bin/", "755"],
+]
