@@ -1,5 +1,4 @@
-use clap::{arg, command, Arg, ArgMatches, Command};
-use clap::builder::Str;
+use clap::{arg, command, ArgMatches, Command};
 
 use crate::monitor::list::{list_monitors, Config};
 use crate::monitor::monitor::Monitor;

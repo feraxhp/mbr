@@ -1,4 +1,4 @@
-use ddc_hi::{Display, Ddc};
+use ddc_hi::{Display};
 
 use super::{get::get_brightness, monitor::Monitor};
 

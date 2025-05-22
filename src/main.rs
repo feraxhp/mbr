@@ -4,7 +4,7 @@ mod monitor;
 
 use crate::commands::list::{list_command, list_mannager};
 
-use clap::{arg, command, crate_version, Arg, Command};
+use clap::{arg, command, crate_version};
 use color_print::cprintln;
 use commands::get::{get_command, get_mannager};
 use commands::set::{set_command, set_mannager};

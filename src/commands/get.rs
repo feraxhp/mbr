@@ -1,13 +1,9 @@
 use std::io::{self, Write};
 
-use clap::{arg, command, Arg, ArgMatches, Command};
-use clap::builder::Str;
+use clap::{arg, command, ArgMatches, Command};
 use color_print::cprintln;
 
 use crate::monitor::get::get_brightness_id;
-use crate::monitor::list::{list_monitors, Config};
-use crate::monitor::monitor::Monitor;
-
 
 pub fn get_command() -> Command {
     let vr = arg!( -q --quiet "Don't show describing text");

@@ -1,13 +1,8 @@
-use std::io::{self, Write};
 use std::process::exit;
 
-use clap::{arg, command, Arg, ArgMatches, Command};
-use clap::builder::Str;
+use clap::{arg, command, ArgMatches, Command};
 use color_print::cprintln;
 
-use crate::monitor::get::get_brightness_id;
-use crate::monitor::list::{list_monitors, Config};
-use crate::monitor::monitor::Monitor;
 use crate::monitor::set::set_brigthness;
 
 
@@ -29,16 +24,8 @@ pub fn set_mannager(args: &ArgMatches) {
     let lv: &String = args.get_one::<String>("level").unwrap();
     let lv: u16 = match lv.parse::<u16>() {
         Ok(lv) => lv,
-        Err(err) => {
-            if !qt { 
-                match err {
-                    ref ParseIntError => {
-                        cprintln!("<r>* Error:</> <m,i>'{}'</> is not a number", lv)
-                    }
-                    err => cprintln!("<r>* Error:</> {:?}", err) 
-                }
-                
-            }
+        Err(_) => {
+            if !qt { cprintln!("<r>* Error:</> <m,i>'{}'</> is not a number", lv) }
             exit(1)
         },
     };
