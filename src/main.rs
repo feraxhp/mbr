@@ -45,14 +45,4 @@ fn main() {
             cprintln!("<y>* No command was provided try using <g,i>'--help'</>");
         }
     }
-    
-    // Enumerar monitores
-    // for mut display in Display::enumerate() {
-    //     // Leer brillo
-    //     if let Ok(val) = display.handle.get_vcp_feature(0x10) {
-    //         println!("Brillo actual {:#?}:{}", display.info.id, val.value());
-    //     }
-    //     // Poner brillo al 50%
-    //     let _ = display.handle.set_vcp_feature(0x10, 50);
-    // }
 }
