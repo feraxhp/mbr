@@ -1,5 +1,6 @@
 use std::process::exit;
 
+use std::io::{self, Write};
 use clap::{arg, command, ArgMatches, Command};
 use color_print::cprintln;
 
@@ -35,7 +36,10 @@ pub fn set_mannager(args: &ArgMatches) {
         Ok(level) => {
             if !qt {
                 cprintln!("<g>* Brightness set to</> <m,i>'{}'</>", level)
-            } else { println!("{}", level) }
+            } else { 
+                let _ = io::stdout().write(level.to_string().as_bytes());
+                let _ = io::stdout().flush();
+            }
         },
         Err(e) => { match e {
             Ok(vec) => {
